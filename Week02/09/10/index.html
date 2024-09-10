@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- this specifies the character set encoding.
+     without this tag our fonts might not load properly -->
+    <meta charset="utf-8" />
+    <!-- the viewport tag sets the initial scale and ensures
+     proper responsive behavior -->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- The title tag shows up in the browser tab and as the big blue link in search results -->
+    <title>HTML Form Elements</title>
+  </head>
+  <body>
+    
+    <p>
+    Here is a form containing basic input types for more information
+    <a href="https://www.w3schools.com/html/html_forms.asp"
+    target="_blank"> 
+    <!-- blank will open a new tab for w3schools -->
+    review W3Schools.</a>
+    </p>
+    <!-- action = where to send the data from the form, maybe it's calculate.js, or a database api endpoint -->
+    <!-- method = how we send it -->
+    <form action="#" method="POST" name="sampleForm" target="_self">
+         <!--what does target="_self do"?  -->
+         <p>
+            You can put any HTML inside a form element, but you should stick to 
+            images and text that give instructions about how to complete your form.
+         </p>
+         <fieldset>
+            <legend>
+                Sample text input
+            </legend>
+            <p>the box & title of the form froup are created by the fieldset & legend tags</p>
+            <!-- if I have "for" next to label then it directs me to the input box once i click on first name -->
+            <label for="first_name">First Name: </label> 
+            <input type="text" name="first_name" id="first_name" required/>
+            <p>
+                This text input has a character limit of 15 characters.
+            </p>
+            <label for="last_name">Last Name: </label>
+            <input 
+            type="text" 
+            name="last_name" 
+            placeholder="Placeholder name"
+            maxlength="15"/>
+            
+            <br/>
+            <label for="age">Your age: </label>
+            <input type="number" name="age" min="0" max="100"/>
+            <br/>
+            <label for="email">Email: </label>
+            <input type="email" name="email" required/>
+            <br/>
+            <label for "password">Password: </label>
+            <input type="password" name="password" required/>
+
+         </fieldset>
+
+         <fieldset>
+            <legend>Text Area Tag</legend>
+            <p>Text areas are for longer text answers. Like sentences or longer answers. </p>
+            <label for="whyIDM">Why did you come to IDM?</label>
+            <textarea name="whyIDM" id="whyIDM" rows="4" cols="50" required></textarea>
+        </fieldset>
+
+        <fieldset>
+            <legend>Check Boxes</legend>
+            <p>Check boxes allow users to select 1+ options at onces
+                Check boxes all have the same name but diff values!
+            </p>
+            <label for="pet">What pets do you have?</label>
+            <br/>
+            <!-- we don't need value var for email or text input bcs whatever we input as text is the value that gets submitted -->
+            <input type="checkbox" name="pet" value="dog"/> Dog
+            <input type="checkbox" name="pet" value="cat"/> Cat
+            <input type="checkbox" name="pet" value="bird" /> Bird
+            <input type="checkbox" name="pet" value="fish"/> Fish
+            <input type="checkbox" name="pet" value="lizard"/> Lizard
+            <input type="checkbox" name="pet" value="chicken"/> Chicken
+            <input type="checkbox" name="pet" value="no pet"required/> I don't have a pet
+        </fieldset>
+
+        <fieldset>
+            <legend>Radio Buttons</legend>
+            <p>Radio buttons allow users to select only 1 option at a time</p>
+            <label for="animal">What is your favorite animal?</label>
+            <input type="radio" name="animal" value="dog"/> Dog
+            <input type="radio" name="animal" value="cat"/> Cat
+            <input type="radio" name="animal" value="bird"/> Bird
+            <input type="radio" name="animal" value="fish"/> Fish
+            <input type="radio" name="animal" value="lizard"/> Lizard
+            <input type="radio" name="animal" value="chicken"/> Chicken
+            <input type="radio" name="animal" value="no animal" required/> I don't like animals like a pyschopath
+        </fieldset>
+
+        <fieldset>
+            <legend>Select Options</legend>
+            <p>Using select & option tags, you can add & remove items from dropdown</p>
+            <label for="state">Pick a state.</label>
+            <br/>
+            <br/>
+            <select name="state" id="state" required>
+                <option value="ny">New York</option>
+                <option value="ca">California</option>
+                <option value="fl">Florida</option>
+                <option value="tx">Texas</option>
+                <option value="wa">Washington</option>
+                <option value="or">Oregon</option>
+                <option value="co">Colorado</option>
+                <option value="nv">Nevada</option>
+                <option value="az">Arizona</option>
+                <option value="ut">Utah</option>
+                <optgroup label="Christianity">
+                    <option value="real">Our Lord & Saviour Jesus Christ</option>
+                    <option value="fake">The Devil</option>
+                </optgroup>
+            </select>
+        </fieldset>
+        <p>Finally, we use a button to submit our form</p>
+        <input name="submit" type="submit" value="Submit"/>
+    </form>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+
+
+  </body>
+</html>
