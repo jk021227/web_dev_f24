@@ -1,0 +1,227 @@
+/* GLOBAL STYLES */
+* {
+    box-sizing: border-box;
+  }
+  
+  body {
+    margin: 0;
+  }
+
+  h1 {
+    font-family: "Jersey 10", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 3em;
+  }  
+
+  h1 a {
+    color: black;
+    text-decoration: none;
+  }
+  
+  img {
+    width: 100%;
+    height: auto;
+  }
+  
+  /* DESKTOP FIRST DESIGN PATTERN */
+  header {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    padding: 1.3rem 0 0.3rem 0;
+    background-color:#CFF9FF;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); 
+  }
+
+  /* Styling the main navigation */
+    #main-nav {
+    text-align: center; /* Centers the navigation content */
+    margin: 20px 0; /* Adds some space around the navigation */
+  }
+  
+  /* Styling the menu items */
+  #main-nav .menu {
+    list-style-type: none; /* Removes bullet points from the list */
+    padding: 0;
+    display: inline-block; /* Makes the menu items sit inline */
+  }
+  
+  /* Styling individual list items */
+  #main-nav .menu li {
+    display: inline; /* Display the list items inline */
+    margin-right: 10px; /* Adds some spacing between the buttons */
+  }
+  
+  /* Styling the buttons (anchor tags) */
+  #main-nav .menu li a {
+    display: inline-block; /* Allows padding and block-like behavior */
+    padding: 10px 25px; /* Adds space inside the buttons */
+    background-color: #02ADC7; /* Button background color */
+    color: white; /* Text color */
+    font-family: "Jersey 20", sans-serif; /* Font style */
+    font-weight: 400;
+    font-size: 1.2em; /* Font size */
+    border-radius: 12px; /* Rounded corners */
+    text-decoration: none; /* Removes the underline */
+    transition: background-color 0.3s ease; /* Adds a smooth transition for hover effect */
+  }
+  
+  /* Hover effect for the buttons */
+  #main-nav .menu li a:hover {
+    background-color: #028CA0; /* Changes color on hover */
+  }
+
+  .rounded-box {
+    background-color: #02ADC7;
+    border: 3px solid #CFF9FF; /* Set the border to make the outline visible */
+    padding: 15px;
+    margin: 2em;
+    border-radius: 35px;
+    color: white;
+    text-align: center;
+    box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.3); 
+  }
+  
+  .rounded-box p {
+    font-size: 2.8em; /* Font size */
+    font-family: "Jersey 20", sans-serif; /* Font family */
+    text-shadow: 1px 1px 0 black, /* Horizontal and vertical offset for shadow */
+                 -1px -1px 0 black, 
+                 -1px 1px 0 black, 
+                 1px -1px 0 black; /* Creates an outline effect */
+  }
+  
+  .brand {
+    margin: 0;
+    font-weight: 300;
+  }
+  
+  .mobile-menu {
+    display: none;
+  }
+  
+  .container {
+    padding: 2rem;
+    display: flex;
+    justify-content: center;
+    /* flex-wrap: wrap; */
+  }
+  
+  
+  .left_col, .right_col {
+    width: 50%; /* Each column will take up nearly half of the container on desktop */
+  }
+  
+  .thumb {
+    width: 60%;
+    margin: 2rem auto;
+  }
+  
+  /* MOBILE STYLES */
+  @media only screen and (max-width: 767px) {
+    header {
+      flex-direction: column; /* Stack the elements vertically */
+      justify-content: center; /* Center the content vertically */
+      align-items: stretch; /* Stretch the items to fill the container */
+      padding: 0;
+    }
+
+    h1 {
+        font-size: 2em;
+        margin: 0.5em;
+    }
+
+    .rounded-box p {
+        font-size: 2.2em;
+    }
+
+    .img {
+        width: 80%;
+
+    }
+
+  
+    .mobile-menu {
+      position: absolute;
+      right: 1rem;
+      top: -.1rem;
+      display: block;
+      font-size: 4rem;
+      color: #02ADC7; 
+      cursor: pointer;
+    }
+  
+/* Styling the main navigation */
+    #main-nav {
+    text-align: center; /* Centers the navigation content */
+    margin: 0; /* Adds some space around the navigation */
+    padding: 0;
+  }
+  
+  /* Styling the menu items */
+  #main-nav .menu {
+    list-style-type: none; /* Removes bullet points from the list */
+    display: flex; /* Makes the menu items sit in a column */
+    flex-direction: column; /* Stack items vertically */
+  }
+  
+  #main-nav .menu li {
+    position: relative; /* Position relative for the border effect */
+  }
+  
+  #main-nav .menu li:not(:last-child)::after {
+    content: ""; /* Empty content for the pseudo-element */
+    display: block; /* Makes it a block element */
+    height: 2px; /* Set the height of the line */
+    background-color: rgba(2, 173, 199, 0.5); /* Set color with 50% opacity */
+    position: absolute; /* Position absolutely to the list item */
+    bottom: 0; /* Aligns the line to the bottom of the li */
+    left: 0; /* Aligns to the left edge */
+    right: 0; /* Stretches to the right edge */
+  }
+  
+  #main-nav .menu li a {
+    display: block; /* Makes the link take up the full width */
+    padding: 15px 0; /* Adds space inside the boxes */
+    background-color: #CFF9FF; /* Button background color */
+    color: #02ADC7; /* Text color */
+    font-family: "Jersey 20", sans-serif; /* Font style */
+    font-weight: 400;
+    font-size: 1.5em; /* Font size */
+    text-decoration: none; /* Removes the underline */
+    transition: background-color 0.3s ease; /* Adds a smooth transition for hover effect */
+  }
+  
+  #main-nav .menu li a:hover {
+    background-color: #B3E1E9; /* Changes color on hover for a subtle effect */
+  }
+  
+    .container {
+      flex-direction: column;
+    }
+  
+    .left_col, .right_col {
+      width: 100%; /* Full width for mobile */
+    }
+
+    .left_col{
+        margin-bottom: 2rem;
+    }
+  
+    .thumb {
+      width: 70%;
+      margin: 1rem auto;
+    }
+  
+    nav {
+      display: none;
+    }
+  
+    .show {
+      display: block;
+    }
+  }
+  

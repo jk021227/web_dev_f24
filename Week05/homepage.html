@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Homepage</title>
+    <link rel="stylesheet" href="./css/styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jersey+10&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jersey+10&family=Jersey+20&display=swap" rel="stylesheet">
+    <script>
+      function toggleMenu() {
+        document.getElementById('main-nav').classList.toggle('show')
+      }
+    </script>
+  </head>
+  <body>
+    <header>
+      <h1><a href="#">M3 — MarryMeMaybe</a></h1>
+      <!-- hide on desktop, show on mobile -->
+      <span class="mobile-menu" onclick="toggleMenu()">&#8801;</span>
+      <nav id="main-nav">
+        <ul class="menu">
+          <li><a href="#">Venue</a></li>
+          <li><a href="#">Flower</a></li>
+          <li><a href="#">Outfits</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main class="container">
+        <div class="left_col">
+          <!-- Rounded box inside left column -->
+          <div class="rounded-box">
+            <p>
+                Curious about how your dream wedding will come together? Explore our fun games to envision your perfect wedding!
+            </p>
+        </div>
+
+        </div>
+        <div class="right_col">
+          <!-- Thumbnails inside the right column -->
+          <div class="thumb"><img src="./images/couple.png" alt="Couple Image" /></div>
+        </div>
+    </main>
+  </body>
+</html>
