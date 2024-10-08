@@ -13,17 +13,25 @@
     <link href="https://fonts.googleapis.com/css2?family=Jersey+10&family=Jersey+20&display=swap" rel="stylesheet">
     <script>
       function toggleMenu() {
-        document.getElementById('main-nav').classList.toggle('show')
+        document.getElementById('mob-menu').classList.toggle('show')
       }
     </script>
   </head>
   <body>
     <header>
       <h1><a href="#">M3 — MarryMeMaybe</a></h1>
-      <!-- hide on desktop, show on mobile -->
-      <span class="mobile-menu" onclick="toggleMenu()">&#8801;</span>
       <nav id="main-nav">
         <ul class="menu">
+          <li><a href="#">Venue</a></li>
+          <li><a href="#">Flower</a></li>
+          <li><a href="#">Outfits</a></li>
+        </ul>
+      </nav>
+      <!-- hide on desktop, show on mobile -->
+      <span class="mobile-menu" onclick="toggleMenu()">&#8801;</span>
+      <!-- need to hide this in desktop ver. -->
+      <nav id="mob-menu">
+        <ul class="mob-menu-inside">
           <li><a href="#">Venue</a></li>
           <li><a href="#">Flower</a></li>
           <li><a href="#">Outfits</a></li>

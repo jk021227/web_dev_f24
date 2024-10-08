@@ -12,6 +12,7 @@
     font-weight: 400;
     font-style: normal;
     font-size: 3em;
+    margin-bottom: 0;
   }  
 
   h1 a {
@@ -31,47 +32,47 @@
     justify-content: space-between;
     align-items: center;
     position: relative;
-    padding: 1.3rem 0 0.3rem 0;
     background-color:#CFF9FF;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); 
   }
 
-  /* Styling the main navigation */
-    #main-nav {
+  /* styling the main navigation */
+  #main-nav {
     text-align: center; /* Centers the navigation content */
-    margin: 20px 0; /* Adds some space around the navigation */
+    margin-top: 0; /* Adds some space around the navigation */
+    padding-top: 0.2em;
   }
   
-  /* Styling the menu items */
+  /* styling the menu items */
   #main-nav .menu {
     list-style-type: none; /* Removes bullet points from the list */
     padding: 0;
     display: inline-block; /* Makes the menu items sit inline */
   }
   
-  /* Styling individual list items */
+  /* styling individual list items */
   #main-nav .menu li {
     display: inline; /* Display the list items inline */
     margin-right: 10px; /* Adds some spacing between the buttons */
   }
   
-  /* Styling the buttons (anchor tags) */
+  /* styling the buttons (anchor tags) */
   #main-nav .menu li a {
-    display: inline-block; /* Allows padding and block-like behavior */
-    padding: 10px 25px; /* Adds space inside the buttons */
-    background-color: #02ADC7; /* Button background color */
-    color: white; /* Text color */
-    font-family: "Jersey 20", sans-serif; /* Font style */
+    display: inline-block; 
+    padding: 10px 25px; 
+    background-color: #02ADC7; 
+    color: white; 
+    font-family: "Jersey 20", sans-serif; 
     font-weight: 400;
-    font-size: 1.2em; /* Font size */
-    border-radius: 12px; /* Rounded corners */
-    text-decoration: none; /* Removes the underline */
-    transition: background-color 0.3s ease; /* Adds a smooth transition for hover effect */
+    font-size: 1.2em; 
+    border-radius: 12px; /* rounded corners */
+    text-decoration: none; /* removes the underline */
+    transition: background-color 0.3s ease;
   }
   
-  /* Hover effect for the buttons */
+  /* hover effect for the buttons */
   #main-nav .menu li a:hover {
-    background-color: #028CA0; /* Changes color on hover */
+    background-color: #028CA0; 
   }
 
   .rounded-box {
@@ -94,25 +95,23 @@
                  1px -1px 0 black; /* Creates an outline effect */
   }
   
-  .brand {
-    margin: 0;
-    font-weight: 300;
-  }
-  
   .mobile-menu {
     display: none;
+  }
+
+  #mob-menu {
+    display: none; 
   }
   
   .container {
     padding: 2rem;
     display: flex;
     justify-content: center;
-    /* flex-wrap: wrap; */
+    flex-wrap: wrap;
   }
   
-  
   .left_col, .right_col {
-    width: 50%; /* Each column will take up nearly half of the container on desktop */
+    width: 50%; /* each column will take up nearly half of the container on desktop */
   }
   
   .thumb {
@@ -123,15 +122,19 @@
   /* MOBILE STYLES */
   @media only screen and (max-width: 767px) {
     header {
-      flex-direction: column; /* Stack the elements vertically */
-      justify-content: center; /* Center the content vertically */
-      align-items: stretch; /* Stretch the items to fill the container */
+      flex-direction: column; /* stacking elements vertically */
+      justify-content: center; /* centering content vertically */
+      align-items: stretch; /* stretching items to fill the container */
       padding: 0;
     }
 
+    /* showing mobile menu when 'show' class is added */
+    #mob-menu.show {
+      display: block;
+    }
     h1 {
         font-size: 2em;
-        margin: 0.5em;
+        margin: 1rem;
     }
 
     .rounded-box p {
@@ -142,69 +145,64 @@
         width: 80%;
 
     }
-
   
-    .mobile-menu {
+    .mobile-menu { /* hamburger menu icon */
       position: absolute;
       right: 1rem;
-      top: -.1rem;
+      top: -.2rem;
       display: block;
       font-size: 4rem;
       color: #02ADC7; 
       cursor: pointer;
+      transition: color 0.3s ease;
     }
-  
-/* Styling the main navigation */
-    #main-nav {
-    text-align: center; /* Centers the navigation content */
-    margin: 0; /* Adds some space around the navigation */
-    padding: 0;
-  }
-  
-  /* Styling the menu items */
-  #main-nav .menu {
-    list-style-type: none; /* Removes bullet points from the list */
-    display: flex; /* Makes the menu items sit in a column */
-    flex-direction: column; /* Stack items vertically */
-  }
-  
-  #main-nav .menu li {
-    position: relative; /* Position relative for the border effect */
-  }
-  
-  #main-nav .menu li:not(:last-child)::after {
-    content: ""; /* Empty content for the pseudo-element */
-    display: block; /* Makes it a block element */
-    height: 2px; /* Set the height of the line */
-    background-color: rgba(2, 173, 199, 0.5); /* Set color with 50% opacity */
-    position: absolute; /* Position absolutely to the list item */
-    bottom: 0; /* Aligns the line to the bottom of the li */
-    left: 0; /* Aligns to the left edge */
-    right: 0; /* Stretches to the right edge */
-  }
-  
-  #main-nav .menu li a {
-    display: block; /* Makes the link take up the full width */
-    padding: 15px 0; /* Adds space inside the boxes */
-    background-color: #CFF9FF; /* Button background color */
-    color: #02ADC7; /* Text color */
-    font-family: "Jersey 20", sans-serif; /* Font style */
-    font-weight: 400;
-    font-size: 1.5em; /* Font size */
-    text-decoration: none; /* Removes the underline */
-    transition: background-color 0.3s ease; /* Adds a smooth transition for hover effect */
-  }
-  
-  #main-nav .menu li a:hover {
-    background-color: #B3E1E9; /* Changes color on hover for a subtle effect */
-  }
-  
+    
+    .mobile-menu:hover {
+      color: #028CA0; /* changes color on hover */
+    }
+
+    #mob-menu { /* mobile menu */
+      flex-direction: column; /* stacking the menu items vertically on mobile. */
+      width: 100%; /* making menu take up the full width of the screen on mobile. */
+      text-align: center; /* centering menu items. */
+    }
+
+    #mob-menu .mob-menu-inside {
+      list-style-type: none; /* removing bullet points from list */
+      text-align: center; /* centering the list items */
+    }
+
+    #mob-menu .mob-menu-inside li {
+      border-bottom: 2px solid rgba(2, 173, 199, 0.2);
+    }
+
+    #mob-menu .mob-menu-inside li a {
+      display: block; /* making the link take up the full width */
+      padding: 15px 0; 
+      background-color: #CFF9FF; /* button's bg color */
+      color: #02ADC7; /* text color */
+      font-family: "Jersey 20", sans-serif; /* font style */
+      font-weight: 400;
+      font-size: 1.5em; /* font size */
+      text-decoration: none; /* removing underline */
+      transition: background-color 0.3s ease; 
+    }
+
+    #mob-menu .mob-menu-inside li a:hover {
+      background-color: #B3E1E9; /* changing color on hover */
+    }
+
+    .mob-menu-inside {
+      padding: 0;
+      margin: 0;
+    }
+
     .container {
       flex-direction: column;
     }
   
     .left_col, .right_col {
-      width: 100%; /* Full width for mobile */
+      width: 100%;
     }
 
     .left_col{
@@ -220,8 +218,5 @@
       display: none;
     }
   
-    .show {
-      display: block;
-    }
   }
   
