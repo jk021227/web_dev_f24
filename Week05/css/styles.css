@@ -5,6 +5,7 @@
   
   body {
     margin: 0;
+    padding-top: 130px;
   }
 
   h1 {
@@ -12,12 +13,15 @@
     font-weight: 400;
     font-style: normal;
     font-size: 3em;
-    margin-bottom: 0;
+    margin: 25px 0 5px 0;
   }  
 
   h1 a {
     color: black;
     text-decoration: none;
+    /* center text */
+    display: block;
+    text-align: center;
   }
   
   img {
@@ -25,15 +29,15 @@
     height: auto;
   }
   
-  /* DESKTOP FIRST DESIGN PATTERN */
+  /* Make header stick to the top of the page */
   header {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    position: relative;
-    background-color:#CFF9FF;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); 
+    position: fixed; /* Fixes the header in place */
+    top: 0; /* Aligns it to the top of the viewport */
+    left: 0;
+    width: 100%; /* Makes the header take the full width */
+    z-index: 50000; /* Ensures the header stays on top of other elements */
+    background-color: #CFF9FF; /* Keeps the background color */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
   }
 
   /* styling the main navigation */
@@ -41,25 +45,30 @@
     text-align: center; /* Centers the navigation content */
     margin-top: 0; /* Adds some space around the navigation */
     padding-top: 0.2em;
+
   }
   
   /* styling the menu items */
   #main-nav .menu {
     list-style-type: none; /* Removes bullet points from the list */
-    padding: 0;
     display: inline-block; /* Makes the menu items sit inline */
+    /* centering items inside menu div */
+    padding: 0;
+    margin: 0;
   }
   
   /* styling individual list items */
   #main-nav .menu li {
     display: inline; /* Display the list items inline */
-    margin-right: 10px; /* Adds some spacing between the buttons */
+    /* space btw buttons */
+    margin-right: 10px; 
   }
   
   /* styling the buttons (anchor tags) */
   #main-nav .menu li a {
     display: inline-block; 
     padding: 10px 25px; 
+    margin: 10px 0 20px 0;
     background-color: #02ADC7; 
     color: white; 
     font-family: "Jersey 20", sans-serif; 
@@ -69,17 +78,21 @@
     text-decoration: none; /* removes the underline */
     transition: background-color 0.3s ease;
   }
-  
+
   /* hover effect for the buttons */
   #main-nav .menu li a:hover {
     background-color: #028CA0; 
+  }
+
+  #main-nav .menu ul {
+    padding: 0;
   }
 
   .rounded-box {
     background-color: #02ADC7;
     border: 3px solid #CFF9FF; /* Set the border to make the outline visible */
     padding: 15px;
-    margin: 2em;
+    margin: 3em 1em 4.5em 7em;
     border-radius: 35px;
     color: white;
     text-align: center;
@@ -104,26 +117,215 @@
   }
   
   .container {
-    padding: 2rem;
+    padding: 3.5rem;
     display: flex;
+    flex-direction: row;
     justify-content: center;
     flex-wrap: wrap;
   }
-  
   .left_col, .right_col {
     width: 50%; /* each column will take up nearly half of the container on desktop */
+    justify-content: center;;
+  }
+
+  .right_col {
+    display: flex;
+    justify-content: center;        /* Center horizontally */
+    align-items: center;            /* Center vertically */
   }
   
   .thumb {
     width: 60%;
     margin: 2rem auto;
   }
+
+  .draggable {
+    /* Enable absolute positioning for dragging */
+    position: absolute; 
+    /* Set default width */
+    width: 100px;
+    /* Change cursor to indicate draggable */ 
+    cursor: grab;
+  }
+
+  .flower-container {
+    display: flex;
+    flex-wrap: wrap;             /* Allow wrapping if the content overflows */
+    justify-content: center;
+    width: 100%;                 /* Ensure the flower-container spans the full width */
+    padding-left:3em;
+  }
+
+  .flower-group {
+    padding-top: 30px;
+    display: block;
+    position: relative;
+    margin-right: 70px;
+    width: 10%;
+    margin-bottom: 10em;
+  }
   
+  .flower-group img{
+    width: 140px;
+    height: auto;
+  }
+
+  .flower-group img:nth-child(1) {
+    top: 0; /* Position the first image */
+  }
+  
+  .flower-group img:nth-child(2) {
+    top: 20px; /* Position the second image slightly lower */
+  }
+  
+  .flower-group img:nth-child(3) {
+    top: 40px; /* Position the third image even lower */
+  }
+
+  .vase {
+    width: 50%;
+    z-index: 9999;
+  }
+
+  .girl {
+    width: 30%;
+    z-index: 0;
+    padding: 3em 0 0 0;
+  }
+
+  .outfit-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;   
+    padding: 0;
+    margin: 0
+  }
+
+  .outfit-group {
+    display: block;
+    justify-content: center;
+    position: relative;
+    width: 50%;
+    margin-bottom: 10em;
+    padding: 0;
+  }
+
+  .image-grid {
+    margin-top: 2em;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);  /* 5 columns */
+    grid-template-rows: repeat(4, 1fr);     /* 4 rows */
+    width: 600px;  /* Adjust the size as per your image */
+    height: 400px;  /* Adjust to maintain the aspect ratio */
+    perspective: 1000px;  /* To enable 3D flip effect */
+  }
+  
+  .image-piece {
+    width: 100%;
+    height: 100%;
+    background-image: url('../images/venue.jpg'); /* Your full image */
+    background-size: 500% 400%; /* Divide the image into 5 columns and 4 rows */
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+    position: relative;
+    cursor: pointer;
+  }
+  
+  .image-piece::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #CFF9FF; /* back of the piece */
+    border: 2px double black;
+    border-radius: 2px;
+    backface-visibility: hidden;
+    transform: rotateY(0deg); /* Back face hidden when not flipped */
+  }
+  
+  /* flip effect when the .flipped class is added */
+  .image-piece.flipped {
+    transform: rotateY(180deg);
+  }
+  
+  /* assigning background positions dynamically based on data-index */
+  .image-piece[data-position="1"] { background-position: 100% 0%; }
+  .image-piece[data-position="2"] { background-position: 75% 0%; }
+  .image-piece[data-position="3"] { background-position: 50% 0%; }
+  .image-piece[data-position="4"] { background-position: 25% 0%; }
+  .image-piece[data-position="5"] { background-position: 0% 0%; }
+  
+  .image-piece[data-position="6"] { background-position: 100% 33%; }
+  .image-piece[data-position="7"] { background-position: 74.8% 33%; }
+  .image-piece[data-position="8"] { background-position: 50% 33%; }
+  .image-piece[data-position="9"] { background-position: 25.1% 33%; }
+  .image-piece[data-position="10"] { background-position: 0% 33%; }
+  
+  .image-piece[data-position="11"] { background-position: 100% 66%; }
+  .image-piece[data-position="12"] { background-position: 75% 66%; }
+  .image-piece[data-position="13"] { background-position: 50% 66%; }
+  .image-piece[data-position="14"] { background-position: 25% 66%; }
+  .image-piece[data-position="15"] { background-position: 0% 66%; }
+  
+  .image-piece[data-position="16"] { background-position: 100% 99%; }
+  .image-piece[data-position="17"] { background-position: 75% 99%; }
+  .image-piece[data-position="18"] { background-position: 50% 99%; }
+  .image-piece[data-position="19"] { background-position: 25% 99%; }
+  .image-piece[data-position="20"] { background-position: 0% 99%; } 
+
+
   /* MOBILE STYLES */
-  @media only screen and (max-width: 767px) {
+@media only screen and (max-width: 767px) {
+  .puzzle-box {
+    /* center content inside this box */
+    display: flex;
+    justify-content: center;
+  }
+  .image-grid {
+    width: 200px;  /* Adjust the size as per your image */
+    height: 120px;  /* Adjust to maintain the aspect ratio */
+  }
+
+  .girl {
+    width: 28%;
+    z-index: 0;
+    padding: 4em 0 2em 0;
+  }
+
+  .outfit-container {
+    padding-left: 2.5em;
+  }
+
+  .flower-container {
+    display: flex;
+    flex-wrap: wrap;             /* Allow wrapping if the content overflows */
+    justify-content: center;
+    width: 100%;                 /* Ensure the flower-container spans the full width */
+    padding: 0;
+  }
+
+  .flower-group img{
+    width: 110px;
+    height: auto;
+  }
+
+  .right_col {
+    padding: 0; /* Set padding to 0 in mobile mode */
+    margin-bottom: 2rem;
+  }
+
+  .vase {
+    width: 60%;
+    margin:0;
+    padding: 0;
+  }
+
     header {
+      position: fixed;
       flex-direction: column; /* stacking elements vertically */
-      justify-content: center; /* centering content vertically */
       align-items: stretch; /* stretching items to fill the container */
       padding: 0;
     }
@@ -135,6 +337,23 @@
     h1 {
         font-size: 2em;
         margin: 1rem;
+    }
+
+    h1 a {
+      color: black;
+      text-decoration: none;
+      /* center text */
+      display: block;
+      text-align: left;
+      margin-left: .5rem;
+    }
+
+    body {
+      padding-top: 100px;
+    }
+
+    .rounded-box {
+        margin: 0 2.5rem 2rem 2.5rem;
     }
 
     .rounded-box p {
@@ -199,14 +418,14 @@
 
     .container {
       flex-direction: column;
+      padding: 0;
+      margin: 0;
     }
   
     .left_col, .right_col {
       width: 100%;
-    }
-
-    .left_col{
-        margin-bottom: 2rem;
+      margin: 0;
+      padding: 0;
     }
   
     .thumb {
