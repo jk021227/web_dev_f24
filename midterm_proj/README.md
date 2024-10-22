@@ -13,8 +13,7 @@ Welcome to the **M3 — Marry Me Maybe** website, where you can let your creativ
 - **🎉 Flip to Reveal Your Dream Venue!**  
   Click to **flip card tiles** to uncover the wedding venue chosen for your special day! 🏰
 
-Ready to create your fantasy wedding? Let’s get started! [demo](file:///Users/youngjukim/Desktop/web_dev/web_dev_f24/midterm_proj/homepage.html)
-🎊
+Ready to create your fantasy wedding? Let’s get started!
 
 ## New things I learned!
 
