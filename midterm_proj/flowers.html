@@ -8,10 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jersey+10&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jersey+10&family=Jersey+20&display=swap" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
   </head>
   <body>
     <header>
@@ -97,30 +94,34 @@
       document.querySelector('.vase').setAttribute('draggable', 'false');
       let currentZIndex = 1000;
 
+      // document.querySelectorAll('.draggable'): selects all images with class name 'draggable' & returns a NodeList
+      // .forEach(function(image) { ... }): iterates through each image in the NodeList
       document.querySelectorAll('.draggable').forEach(function(image) {
-          image.setAttribute('draggable', 'false');
+          image.setAttribute('draggable', 'false'); // disable drag-and-drop feature for each image
 
           let isDragging = false;
           let xOffset = 0, yOffset = 0, startX = 0, startY = 0;
 
-          // Prevent default drag behavior
+          // prevent default drag behavior -> this prevets the image from "copy-dragging" instead of actually dragging on screen
           image.addEventListener('dragstart', (e) => e.preventDefault());
 
-          // Mouse events
+          // mouse events(aka movements)
           image.addEventListener('mousedown', function(e) {
               isDragging = true;
-              startX = e.clientX - xOffset;
-              startY = e.clientY - yOffset;
+              startX = e.clientX - xOffset; // starting x-coordinate of the image, e.clientX: x-coordinate of the mouse pointer
+              startY = e.clientY - yOffset; // starting y-coordinate of the image, e.clientY: y-coordinate of the mouse pointer
           });
-
+          
+          // mousemove event: when the mouse pointer is moved
           document.addEventListener('mousemove', function(e) {
               if (isDragging) {
-                  e.preventDefault();
-                  xOffset = e.clientX - startX;
-                  yOffset = e.clientY - startY;
+                  e.preventDefault(); // prevent default behavior of the event which is to drag the image
+                  xOffset = e.clientX - startX; // calculate the x-coordinate of the image by subtracting the starting x-coordinate from the current x-coordinate of the mouse pointer
+                  yOffset = e.clientY - startY; 
+                  // move the image to the new x and y coordinates
                   image.style.transform = `translate(${xOffset}px, ${yOffset}px)`;
-                  currentZIndex++;
-                  image.style.zIndex = currentZIndex;
+                  currentZIndex++; // increase the z-index to make sure the image is on top of other images
+                  image.style.zIndex = currentZIndex; // set the z-index of the image so that next image is on top
               }
           });
 
@@ -130,13 +131,13 @@
               }
           });
 
-          // Touch events
+          // touch events (for mobile)
           image.addEventListener('touchstart', function(e) {
               isDragging = true;
-              // Use the first touch point
+              // using first touch point
               startX = e.touches[0].clientX - xOffset;
               startY = e.touches[0].clientY - yOffset;
-              e.preventDefault(); // Prevent scrolling
+              e.preventDefault(); // prevent scrolling when trying to drag icon image
           });
 
           document.addEventListener('touchmove', function(e) {
@@ -145,7 +146,7 @@
                   xOffset = e.touches[0].clientX - startX;
                   yOffset = e.touches[0].clientY - startY;
                   image.style.transform = `translate(${xOffset}px, ${yOffset}px)`;
-                  currentZIndex++;
+                  currentZIndex++; // increase in z-index to make sure the image is on top of other images
                   image.style.zIndex = currentZIndex;
               }
           });

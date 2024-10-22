@@ -8,10 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jersey+10&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jersey+10&family=Jersey+20&display=swap" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
   </head>
   <body>
     <header>
@@ -72,10 +69,10 @@
             let isDragging = false;
             let xOffset = 0, yOffset = 0, startX = 0, startY = 0;
 
-            // Prevent default drag behavior
+            // prevent default drag behavior so that image doesn't get dragged to be saved 
             image.addEventListener('dragstart', (e) => e.preventDefault());
 
-            // Mouse events
+            // mouse events (aka movement)
             image.addEventListener('mousedown', function(e) {
                 isDragging = true;
                 startX = e.clientX - xOffset;
@@ -99,18 +96,17 @@
                 }
             });
 
-            // Touch events
+            // touch events (for mobile)
             image.addEventListener('touchstart', function(e) {
                 isDragging = true;
-                // Use the first touch point
                 startX = e.touches[0].clientX - xOffset;
                 startY = e.touches[0].clientY - yOffset;
-                e.preventDefault(); // Prevent scrolling
+                e.preventDefault(); // prevent scrolling when moving icon image
             });
 
             document.addEventListener('touchmove', function(e) {
                 if (isDragging) {
-                    e.preventDefault(); // Prevent scrolling
+                    e.preventDefault(); 
                     xOffset = e.touches[0].clientX - startX;
                     yOffset = e.touches[0].clientY - startY;
                     image.style.transform = `translate(${xOffset}px, ${yOffset}px)`;
