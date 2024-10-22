@@ -137,7 +137,12 @@
   .thumb {
     width: 60%;
     margin: 2rem auto;
-    animation: bounce 1s infinite; /* applying animation by default */
+    transition: transform 0.5s ease-in-out;
+  }
+  
+  /* hover animation */
+  .thumb:hover {
+    animation: bounce 1s infinite;
   }
   
   /* keyframes for bounce */
@@ -146,9 +151,9 @@
       transform: translateY(0);
     }
     50% {
-      transform: translateY(-20px); /* moving up */
+      transform: translateY(-20px); /* Move up */
     }
-  }
+  }  
   
   .draggable {
     /* enabling absolute positioning for dragging */
