@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Set Interval</title>
+    <script>
+        let counter = 0
+
+        // function to call every x many seconds or whatever
+        function intervalTest(){
+            let p = document.getElementById('timeElapsed')
+            p.innerHTML = `This page has been open for ${counter} seconds.`
+            counter+=1
+        }
+
+        // calling a function directly on the browser window
+        // and use setInterval to say how often we want our function to fire
+        window.setInterval(intervalTest, 900)
+
+    </script>
+    </head>
+    <body>
+        <p id="timeElapsed">
+            This text will go away once the function overrides this inner HTML.
+        </p>
+    </body>
+</html>
