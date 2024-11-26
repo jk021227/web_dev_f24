@@ -148,7 +148,7 @@
     /* center horizontally */
     justify-content: center;     
     /* center vertically */   
-    align-items: center;          
+    align-items: center;        
   }
   
   .thumb {
@@ -247,6 +247,7 @@
 
   .image-grid {
     margin-top: 5em;
+    margin-left: 1em;
     display: grid;
     grid-template-columns: repeat(5, 1fr);  /* 5 columns fr=fraction */
     grid-template-rows: repeat(4, 1fr);     /* 4 rows */
@@ -351,23 +352,26 @@
     right: 30px;
     margin: 0 auto;
     padding: 10px 20px;
-    background-color: #02ADC7;
     color: white;
     font-family: "Jersey 20", sans-serif;
     font-weight: 400;
     font-size: 1.2em;
     border-radius: 12px;
     text-decoration: none;
-    transition: background-color 0.3s ease;
-  }
-
-
-  body[data-theme="dark"] .change-theme-btn {
-    background-color:  #FF69B4;
+    background-image: url('../images/wave2.png');
+    background-color: #02ADC7;
+    background-repeat: repeat-x;
+    background-position: 0 -180%;
+    transition: background-position 1s, background-color 0.3s, border-color 0.3s;
   }
 
   .change-theme-btn:hover {
-    opacity: 0.8;
+    background-position: 1500% 35%;
+  }
+
+  body[data-theme="dark"] .change-theme-btn {
+    background-image:  url('../images/wave1.png');
+    background-color: #FF69B4;
   }
 
 
@@ -382,6 +386,8 @@
   .image-grid {
     width: 400px;  
     height: 320px; 
+    margin: 0;
+    margin-bottom: 2em;
   }
 
   .girl {
@@ -527,6 +533,11 @@
       width: 100%;
       margin: 0;
       padding: 0;
+    }
+
+    .left_col {
+      display: flex;
+      justify-content: center;
     }
   
     .thumb {
