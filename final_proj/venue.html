@@ -25,7 +25,7 @@
       <!-- need to hide this in desktop ver. -->
       <nav id="mob-menu">
         <ul class="mob-menu-inside">
-          <li><a href="#" id="venue-link-mob" style="color: white; background-color: #02ADC7;">Venue</a></li>
+          <li><a href="#"  id="venue-link-mob" style="color: white; background-color: #02ADC7;">Venue</a></li>
           <li><a href="flowers.html">Flowers</a></li>
           <li><a href="outfits.html">Outfits</a></li>
         </ul>
@@ -33,33 +33,58 @@
     </header>
   
     <main class="container">
-      <div class="puzzle-box">
+      <div class="left_col">
         <div class="image-grid">
-          <div class="image-piece" data-position="1"></div>
-          <div class="image-piece" data-position="2"></div>
-          <div class="image-piece" data-position="3"></div>
-          <div class="image-piece" data-position="4"></div>
-          <div class="image-piece" data-position="5"></div>
-          <div class="image-piece" data-position="6"></div>
-          <div class="image-piece" data-position="7"></div>
-          <div class="image-piece" data-position="8"></div>
-          <div class="image-piece" data-position="9"></div>
-          <div class="image-piece" data-position="10"></div>
-          <div class="image-piece" data-position="11"></div>
-          <div class="image-piece" data-position="12"></div>
-          <div class="image-piece" data-position="13"></div>
-          <div class="image-piece" data-position="14"></div>
-          <div class="image-piece" data-position="15"></div>
-          <div class="image-piece" data-position="16"></div>
-          <div class="image-piece" data-position="17"></div>
-          <div class="image-piece" data-position="18"></div>
-          <div class="image-piece" data-position="19"></div>
-          <div class="image-piece" data-position="20"></div>
+          <div class="drop-zone" data-position="1"></div>
+          <div class="drop-zone" data-position="2"></div>
+          <div class="drop-zone" data-position="3"></div>
+          <div class="drop-zone" data-position="4"></div>
+          <div class="drop-zone" data-position="5"></div>
+          <div class="drop-zone" data-position="6"></div>
+          <div class="drop-zone" data-position="7"></div>
+          <div class="drop-zone" data-position="8"></div>
+          <div class="drop-zone" data-position="9"></div>
+          <div class="drop-zone" data-position="10"></div>
+          <div class="drop-zone" data-position="11"></div>
+          <div class="drop-zone" data-position="12"></div>
+          <div class="drop-zone" data-position="13"></div>
+          <div class="drop-zone" data-position="14"></div>
+          <div class="drop-zone" data-position="15"></div>
+          <div class="drop-zone" data-position="16"></div>
+          <div class="drop-zone" data-position="17"></div>
+          <div class="drop-zone" data-position="18"></div>
+          <div class="drop-zone" data-position="19"></div>
+          <div class="drop-zone" data-position="20"></div>
         </div> 
       </div>
+        <div class="right_col">
+          <div class="image-grid">
+            <div class="image-piece" draggable="true" data-position="1"></div>
+            <div class="image-piece" draggable="true" data-position="2"></div>
+            <div class="image-piece" draggable="true" data-position="3"></div>
+            <div class="image-piece" draggable="true" data-position="4"></div>
+            <div class="image-piece" draggable="true" data-position="5"></div>
+            <div class="image-piece" draggable="true" data-position="6"></div>
+            <div class="image-piece" draggable="true" data-position="7"></div>
+            <div class="image-piece" draggable="true" data-position="8"></div>
+            <div class="image-piece" draggable="true" data-position="9"></div>
+            <div class="image-piece" draggable="true" data-position="10"></div>
+            <div class="image-piece" draggable="true" data-position="11"></div>
+            <div class="image-piece" draggable="true" data-position="12"></div>
+            <div class="image-piece" draggable="true" data-position="13"></div>
+            <div class="image-piece" draggable="true" data-position="14"></div>
+            <div class="image-piece" draggable="true" data-position="15"></div>
+            <div class="image-piece" draggable="true" data-position="16"></div>
+            <div class="image-piece" draggable="true" data-position="17"></div>
+            <div class="image-piece" draggable="true" data-position="18"></div>
+            <div class="image-piece" draggable="true" data-position="19"></div>
+            <div class="image-piece" draggable="true" data-position="20"></div>
+          </div>
+          <button class="restart-btn" onclick="resetPieces()">restart</button>
+          <button class="change-theme-btn" onclick="toggleTheme()">change theme</button>
+        </div>
+      </div>
     </main>
-    <button class="change-theme-btn" onclick="toggleTheme()">change theme</button>
-
     <script>
       function toggleTheme() {
         const currentTheme = localStorage.getItem('theme') || 'light';
@@ -75,32 +100,129 @@
         updateThemeStyles(savedTheme);
       }
 
+
       function updateThemeStyles(theme) {
         const venueLink = document.getElementById('venue-link');
         const venueLinkMob = document.getElementById('venue-link-mob');
+        const modal = document.querySelector('.modal');
 
         if (venueLink) {
           venueLink.style.backgroundColor = theme === 'dark' ? '#df0070' : '#005d6b';
         }
 
-        if(venueLinkMob) {
+        if (venueLinkMob) {
           venueLinkMob.style.backgroundColor = theme === 'dark' ? '#df0070' : '#02ADC7';
+        }
+
+        if (modal) {
+          modal.style.backgroundColor = theme === 'dark' ? '#FFDFF0' : '#CFF9FF'; 
+          modal.style.borderColor = theme === 'dark' ? '#df0070' : '#02ADC7'; 
+        }
+      }
+      const pieces = document.querySelectorAll('.image-piece');
+      const dropZones = document.querySelectorAll('.drop-zone');
+      const modal = document.createElement("div");
+      const completedPositions = new Set();
+      const modalMessage = document.createElement("p");
+
+      modal.classList.add("modal"); // get modal's styling
+      modal.appendChild(modalMessage); // adding message to modal
+      document.body.appendChild(modal); // adding modal to document body
+
+      function showModal(message) {
+        modalMessage.textContent = message;
+        modal.style.display = "block";
+        setTimeout(() => {
+          modal.style.display = "none";
+        }, 800);
+      }
+
+      function resetPieces() {
+        const grid = document.querySelector(".right_col .image-grid");
+        const dropZones = document.querySelectorAll(".drop-zone");
+        pieces.forEach(piece => {
+          grid.appendChild(piece);
+        });
+
+        dropZones.forEach(zone => {
+          while (zone.firstChild) {
+            zone.removeChild(zone.firstChild);
+          }
+        });
+
+        randomizePieces();
+
+        showModal("Puzzle reset!");
+      }
+
+      function randomizePieces() {
+        const grid = document.querySelector(".right_col .image-grid");
+        const shuffledPieces = Array.from(pieces).sort(() => Math.random() - 0.5);
+        shuffledPieces.forEach(piece => grid.appendChild(piece));
+      }
+      pieces.forEach(piece => {
+        piece.addEventListener("dragstart", dragStart);
+        piece.addEventListener("dragend", dragEnd);
+
+        piece.addEventListener("click", function () {
+          this.classList.toggle("flipped");
+        });
+      });
+
+      dropZones.forEach(zone => {
+        zone.addEventListener("dragover", dragOver);
+        zone.addEventListener("drop", drop);
+      });
+
+      let draggedPiece = null;
+
+      function dragStart(e) {
+        draggedPiece = e.target;
+        setTimeout(() => (draggedPiece.style.display = "none"), 0); 
+      }
+
+      function dragEnd() {
+        draggedPiece.style.display = "block";
+        draggedPiece = null;
+      }
+
+      function dragOver(e) {
+        e.preventDefault(); 
+      }
+
+      function drop(e) {
+        e.preventDefault();
+
+        if (e.target.classList.contains("drop-zone")) {
+          const dropZonePosition = e.target.getAttribute("data-position");
+          const piecePosition = draggedPiece.getAttribute("data-position");
+
+          if (dropZonePosition === piecePosition) {
+            if (!e.target.hasChildNodes()) {
+              e.target.appendChild(draggedPiece); 
+              showModal("Correct spot! :>");
+            }
+          } else {
+            const grid = document.querySelector(".right_col .image-grid");
+            grid.appendChild(draggedPiece);
+            showModal("Wrong spot! :<");
+          }
+        } else {
+          const grid = document.querySelector(".right_col .image-grid");
+          grid.appendChild(draggedPiece);
         }
       }
 
-      document.addEventListener('DOMContentLoaded', loadTheme);
+
+      document.addEventListener("DOMContentLoaded", () => {
+        randomizePieces();
+        loadTheme();
+      });
+
+      
       function toggleMenu() {
         document.getElementById('mob-menu').classList.toggle('show')
       }
-
-      const pieces = document.querySelectorAll('.image-piece');
-
-      pieces.forEach(piece => {
-        piece.addEventListener('click', function() {
-          // toggling flip effect
-          this.classList.toggle('flipped');
-        });
-      });
 
 
     </script>

@@ -27,7 +27,7 @@
         <ul class="mob-menu-inside">
           <li><a href="venue.html">Venue</a></li>
           <li><a href="flowers.html">Flowers</a></li>
-          <li><a href="#" id="outfits-links-mob" style="background-color: #02ADC7;">Outfits</a></li>
+          <li><a href="#" id="outfits-links-mob" style="color: white; background-color: #02ADC7;">Outfits</a></li>
         </ul>
       </nav>
     </header>
@@ -75,6 +75,7 @@
       function updateThemeStyles(theme) {
         const outfitsLink = document.getElementById('outfits-link');
         const outfitsLinkMob = document.getElementById('outfits-links-mob');
+        const girlImage = document.querySelector('.girl');
 
         if (outfitsLink) {
           outfitsLink.style.backgroundColor = theme === 'dark' ? '#df0070' : '#005d6b';
@@ -82,6 +83,10 @@
 
         if (outfitsLinkMob) {
           outfitsLinkMob.style.backgroundColor = theme === 'dark' ? '#df0070' : '#02ADC7';
+        }
+
+        if (girlImage) {
+          girlImage.src = theme === 'dark' ? './images/girl2.png' : './images/girl.png'; 
         }
       }
 
