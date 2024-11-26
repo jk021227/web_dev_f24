@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Homepage</title>
+    <link rel="stylesheet" href="./css/styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jersey+10&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Jersey+10&family=Jersey+20&display=swap" rel="stylesheet">
+    <script>
+      function toggleMenu() {
+        document.getElementById('mob-menu').classList.toggle('show');
+      }
+
+      function toggleTheme() {
+        const currentTheme = localStorage.getItem('theme') || 'light';
+        const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+        document.body.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+      }
+
+      function loadTheme() {
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        document.body.setAttribute('data-theme', savedTheme);
+      }
+
+      document.addEventListener('DOMContentLoaded', loadTheme);
+    </script>
+  </head>
+  <body>
+    <header>
+      <h1><a href="homepage.html">M3 — MarryMeMaybe</a></h1>
+      <nav id="main-nav">
+        <ul class="menu">
+          <li><a href="venue.html">Venue</a></li>
+          <li><a href="flowers.html">Flowers</a></li>
+          <li><a href="outfits.html">Outfits</a></li>
+        </ul>
+      </nav>
+      <!-- hide on desktop, show on mobile -->
+      <span class="mobile-menu" onclick="toggleMenu()">&#8801;</span>
+      <!-- need to hide this in desktop ver. -->
+      <nav id="mob-menu">
+        <ul class="mob-menu-inside">
+          <li><a href="venue.html">Venue</a></li>
+          <li><a href="flowers.html">Flowers</a></li>
+          <li><a href="outfits.html">Outfits</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main class="container">
+        <div class="left_col">
+          <!-- Rounded box inside left column -->
+          <div class="rounded-box">
+            <p>
+                Curious about how your dream wedding will come together? Explore our fun games to envision your perfect wedding!
+            </p>
+        </div>
+
+        </div>
+        <div class="right_col">
+          <!-- Thumbnails inside the right column -->
+          <div class="thumb"><img src="./images/couple.png" alt="Couple Image" /></div>
+          <button class="change-theme-btn" onclick="toggleTheme()">change theme</button>
+        </div>
+    </main>
+  </body>
+</html>

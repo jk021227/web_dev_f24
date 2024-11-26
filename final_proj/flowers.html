@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Flowers</title>
+    <link rel="stylesheet" href="./css/styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jersey+10&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Jersey+10&family=Jersey+20&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <header>
+      <h1><a href="homepage.html">M3 — MarryMeMaybe</a></h1>
+      <nav id="main-nav">
+        <ul class="menu">
+          <li><a href="venue.html">Venue</a></li>
+          <li><a href="#" id="flowers-link" style="background-color: #005d6b;">Flowers</a></li>
+          <li><a href="outfits.html">Outfits</a></li>
+        </ul>
+      </nav>
+      <!-- hide on desktop, show on mobile -->
+      <span class="mobile-menu" onclick="toggleMenu()">&#8801;</span>
+      <!-- need to hide this in desktop ver. -->
+      <nav id="mob-menu">
+        <ul class="mob-menu-inside">
+          <li><a href="venue.html">Venue</a></li>
+          <li><a href="#" id="flowers-link-mob" style="color: white; background-color: #02ADC7;">Flowers</a></li>
+          <li><a href="outfits.html">Outfits</a></li>
+        </ul>
+      </nav>
+    </header>
+  
+    <main class="container" style="margin-top: 50px;">
+      <div class="left_col" style="padding-top: 10px;">
+        <div class="flower-container">
+          <div class="flower-group" style="padding: 0">
+            <img src="./images/flower1.png" class="draggable">
+            <img src="./images/flower1.png" class="draggable">
+            <img src="./images/flower1.png" class="draggable">
+          </div>
+
+          <div class="flower-group">
+            <img src="./images/flower2.png" class="draggable">
+            <img src="./images/flower2.png" class="draggable">
+            <img src="./images/flower2.png" class="draggable">
+          </div>
+
+          <div class="flower-group">
+            <img src="./images/flower3.png" class="draggable">
+            <img src="./images/flower3.png" class="draggable">
+            <img src="./images/flower3.png" class="draggable">
+          </div>
+
+          <div class="flower-group">
+            <img src="./images/flower4.png" class="draggable">
+            <img src="./images/flower4.png" class="draggable">
+            <img src="./images/flower4.png" class="draggable">
+          </div>
+
+          <div class="flower-group">
+            <img src="./images/flower5.png" class="draggable">
+            <img src="./images/flower5.png" class="draggable">
+            <img src="./images/flower5.png" class="draggable">
+          </div>
+
+          <div class="flower-group">
+            <img src="./images/flower6.png" class="draggable">
+            <img src="./images/flower6.png" class="draggable">
+            <img src="./images/flower6.png" class="draggable">
+          </div>
+
+          <div class="flower-group">
+            <img src="./images/flower7.png" class="draggable">
+            <img src="./images/flower7.png" class="draggable">
+            <img src="./images/flower7.png" class="draggable">
+          </div>
+        </div>
+      </div>
+
+      <div class="right_col" style="justify-content: center; margin-bottom: 2rem;" draggable="false">
+        <img src="./images/vase.png" class="vase">
+        <button class="change-theme-btn" onclick="toggleTheme()">change theme</button>
+      </div>
+
+    </div>
+
+  </main>
+    <script>
+
+      function toggleTheme() {
+        const currentTheme = localStorage.getItem('theme') || 'light';
+        const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+        document.body.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+        updateThemeStyles(newTheme);
+      }
+
+      function loadTheme() {
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        document.body.setAttribute('data-theme', savedTheme);
+        updateThemeStyles(savedTheme);
+      }
+
+      function updateThemeStyles(theme) {
+        const flowersLink = document.getElementById('flowers-link');
+        const flowersLinkMob = document.getElementById('flowers-link-mob');
+
+        if (flowersLink) {
+          flowersLink.style.backgroundColor = theme === 'dark' ? '#df0070' : '#005d6b';
+        }
+
+        if (flowersLinkMob) {
+          flowersLinkMob.style.backgroundColor = theme === 'dark' ? '#df0070' : '#02ADC7';
+        }
+      }
+
+      document.addEventListener('DOMContentLoaded', loadTheme);
+
+      function toggleMenu() {
+        document.getElementById('mob-menu').classList.toggle('show')
+      }
+
+      document.querySelector('.vase').setAttribute('draggable', 'false');
+      let currentZIndex = 1000;
+
+      // document.querySelectorAll('.draggable'): selects all images with class name 'draggable' & returns a NodeList
+      // .forEach(function(image) { ... }): iterates through each image in the NodeList
+      document.querySelectorAll('.draggable').forEach(function(image) {
+          image.setAttribute('draggable', 'false'); // disable drag-and-drop feature for each image
+
+          let isDragging = false;
+          let xOffset = 0, yOffset = 0, startX = 0, startY = 0;
+
+          // prevent default drag behavior -> this prevets the image from "copy-dragging" instead of actually dragging on screen
+          image.addEventListener('dragstart', (e) => e.preventDefault());
+
+          // mouse events(aka movements)
+          image.addEventListener('mousedown', function(e) {
+              isDragging = true;
+              startX = e.clientX - xOffset; // starting x-coordinate of the image, e.clientX: x-coordinate of the mouse pointer
+              startY = e.clientY - yOffset; // starting y-coordinate of the image, e.clientY: y-coordinate of the mouse pointer
+          });
+          
+          // mousemove event: when the mouse pointer is moved
+          document.addEventListener('mousemove', function(e) {
+              if (isDragging) {
+                  e.preventDefault(); // prevent default behavior of the event which is to drag the image
+                  xOffset = e.clientX - startX; // calculate the x-coordinate of the image by subtracting the starting x-coordinate from the current x-coordinate of the mouse pointer
+                  yOffset = e.clientY - startY; 
+                  // move the image to the new x and y coordinates
+                  image.style.transform = `translate(${xOffset}px, ${yOffset}px)`;
+                  currentZIndex++; // increase the z-index to make sure the image is on top of other images
+                  image.style.zIndex = currentZIndex; // set the z-index of the image so that next image is on top
+              }
+          });
+
+          document.addEventListener('mouseup', function() {
+              if (isDragging) {
+                  isDragging = false;
+              }
+          });
+
+          // touch events (for mobile)
+          image.addEventListener('touchstart', function(e) {
+              isDragging = true;
+              // using first touch point
+              startX = e.touches[0].clientX - xOffset;
+              startY = e.touches[0].clientY - yOffset;
+              e.preventDefault(); // prevent scrolling when trying to drag icon image
+          });
+
+          document.addEventListener('touchmove', function(e) {
+              if (isDragging) {
+                  e.preventDefault();
+                  xOffset = e.touches[0].clientX - startX;
+                  yOffset = e.touches[0].clientY - startY;
+                  image.style.transform = `translate(${xOffset}px, ${yOffset}px)`;
+                  currentZIndex++; // increase in z-index to make sure the image is on top of other images
+                  image.style.zIndex = currentZIndex;
+              }
+          });
+
+          document.addEventListener('touchend', function() {
+              if (isDragging) {
+                  isDragging = false;
+              }
+          });
+      });
+
+    </script>
+  </body>
+</html>
