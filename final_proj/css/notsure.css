@@ -1,0 +1,157 @@
+
+.container-ven {
+    width: 100%;
+    height: 100%;
+    margin-top: 150px;
+    padding: 0 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container-wrapper-ven {
+    width: 100%;
+}
+
+.container-wrapper-ven .slider {
+    position: relative;
+    width: 100%;
+    height: fit-content;
+}
+
+.container-wrapper-ven .slider input {
+    display: none;
+}
+
+.cards {
+    perspective: 1000px;
+    transform-style: preserve-3d;
+    position: relative;
+    height: auto;
+    width: 100%;
+}
+
+.cards label {
+    transition: transform 0.5s;
+    position: absolute;
+    width: 250px;
+    height: 100%;
+    left: 0;
+    right: 0;
+    margin: auto;
+    cursor: pointer;
+}
+
+.cards .card {
+    position: relative;
+    width: 400px;
+    height: auto;
+    transition: all 0.35s ease;
+}
+
+.cards .card:hover {
+    transform: scale(1.05);
+}
+
+.cards .card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    overflow: hidden;
+    border-radius: 15px;
+}
+
+/* third card left */
+#s1:checked~ .cards #slider4,
+#s2:checked~ .cards #slider5,
+#s3:checked~ .cards #slider1,
+#s4:checked~ .cards #slider2,
+#s5:checked~ .cards #slider3 {
+    box-shadow: 6px 24px 12px rgba(0, 0, 0, 0.2);
+    transform: translate3d(-70%,0,-240px);
+}
+
+/* second card left */
+#s1:checked~ .cards #slider5,
+#s2:checked~ .cards #slider1,
+#s3:checked~ .cards #slider2,
+#s4:checked~ .cards #slider3,
+#s5:checked~ .cards #slider4 {
+    box-shadow: 8px 30px 12px rgba(0, 0, 0, 0.2);
+    transform: translate3d(-35%,0,-120px);
+}
+
+/* middle card */
+#s1:checked~ .cards #slider1,
+#s2:checked~ .cards #slider2,
+#s3:checked~ .cards #slider3,
+#s4:checked~ .cards #slider4,
+#s5:checked~ .cards #slider5 {
+    box-shadow: 0 16px 40px 20px rgba(0, 0, 0, 0.2);
+    transform: translate3d(0,0,0);
+}
+
+/* second card right */
+#s1:checked~ .cards #slider2,
+#s2:checked~ .cards #slider3,
+#s3:checked~ .cards #slider4,
+#s4:checked~ .cards #slider5,
+#s5:checked~ .cards #slider1 {
+    box-shadow: 8px 30px 12px rgba(0, 0, 0, 0.2);
+    transform: translate3d(35%,0,-120px);
+}
+
+/* third card right */
+#s1:checked~ .cards #slider3,
+#s2:checked~ .cards #slider4,
+#s3:checked~ .cards #slider5,
+#s4:checked~ .cards #slider1,
+#s5:checked~ .cards #slider2 {
+    box-shadow: 6px 24px 12px rgba(0, 0, 0, 0.2);
+    transform: translate3d(70%,0,-240px);
+}
+
+.dots {
+    width: fit-content;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    gap: 4px;
+    padding-top: 94px;
+}
+
+.dots label{
+    width: 36px;
+    height: 5px;
+    cursor: pointer;
+    border-radius: 0;
+    background-color: white;
+    border: 1px solid black;
+    opacity: 1;
+}
+
+.dots label.active {
+    background-color: black;
+}
+
+.slider-arrow-prev {
+    position: absolute;
+    font-size: 20px;
+    font-weight: 700;
+    width: 38px;
+    height: 38px;
+    cursor: pointer;
+    top: calc(50% - 38px);
+    right: 20px;
+}
+
+.slider-arrow-next {
+    position: absolute;
+    font-size: 20px;
+    font-weight: 700;
+    width: 38px;
+    height: 38px;
+    cursor: pointer;
+    top: calc(50% - 38px);
+    right: 20px;
+}

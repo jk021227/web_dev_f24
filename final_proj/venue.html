@@ -15,7 +15,7 @@
       <h1><a href="homepage.html">M3 — MarryMeMaybe</a></h1>
       <nav id="main-nav">
         <ul class="menu">
-          <li><a href="#" id="venue-link" style="background-color: #005d6b;">Venue</a></li>
+          <li><a href="venues.html">Venues</a></li>
           <li><a href="flowers.html">Flowers</a></li>
           <li><a href="outfits.html">Outfits</a></li>
         </ul>
@@ -25,7 +25,7 @@
       <!-- need to hide this in desktop ver. -->
       <nav id="mob-menu">
         <ul class="mob-menu-inside">
-          <li><a href="#"  id="venue-link-mob" style="color: white; background-color: #02ADC7;">Venue</a></li>
+          <li><a href="venues.html">Venues</a></li>
           <li><a href="flowers.html">Flowers</a></li>
           <li><a href="outfits.html">Outfits</a></li>
         </ul>
@@ -102,17 +102,7 @@
 
 
       function updateThemeStyles(theme) {
-        const venueLink = document.getElementById('venue-link');
-        const venueLinkMob = document.getElementById('venue-link-mob');
         const modal = document.querySelector('.modal');
-
-        if (venueLink) {
-          venueLink.style.backgroundColor = theme === 'dark' ? '#df0070' : '#005d6b';
-        }
-
-        if (venueLinkMob) {
-          venueLinkMob.style.backgroundColor = theme === 'dark' ? '#df0070' : '#02ADC7';
-        }
 
         if (modal) {
           modal.style.backgroundColor = theme === 'dark' ? '#FFDFF0' : '#CFF9FF'; 
@@ -136,6 +126,36 @@
           modal.style.display = "none";
         }, 800);
       }
+
+      document.addEventListener("DOMContentLoaded", () => {
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        const venueID = urlParams.get("id");
+
+        const venueImages = {
+          1: './images/venue.jpg',
+          2: './images/venue2.webp',
+          3: './images/venue3.webp',
+          4: './images/venue4.webp',
+          5: './images/venue5.webp',
+        };
+
+        const imagePieces = document.querySelectorAll('.image-piece');
+        const selectedImage = venueImages[venueID] || './images/venue.jpg';
+
+        imagePieces.forEach((piece, index) => {
+          const rows = 4;
+          const cols = 5;
+          const row = Math.floor(index / cols);
+          const col = index % cols;
+
+          piece.style.backgroundImage = `url('${selectedImage}')`;
+          piece.style.backgroundPosition = `${(col * 100) / (cols - 1)}% ${(row * 100) / (rows - 1)}%`;
+        });
+
+        loadTheme();
+      });
+
 
       function resetPieces() {
         const grid = document.querySelector(".right_col .image-grid");

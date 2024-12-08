@@ -1,0 +1,64 @@
+.carousel-inner{
+    padding-top: 180px;
+    margin:0;
+}
+.carousel-indicators [data-bs-target] {
+    background-color: transparent;
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    text-indent: 0;
+    color: #eeeeee;
+    font-size: 30px;
+}
+
+.carousel-caption {
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 20px;
+    margin: 0;
+}
+
+.carousel-caption h5 {
+    font-family: "Jersey 10", sans-serif;
+    font-size: 40px;
+    text-transform: uppercase;
+    text-shadow: 5px 5px 5px rgb(114, 114, 114);
+    color: white;
+    padding: 0;
+    margin:0;
+}
+
+.carousel-caption p {
+    font-style: italic;
+    color: white;
+}
+
+.carousel-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.carousel-item img {
+    max-width: 65%;
+    border-radius: 20px;
+    display: block;
+    margin: 0 auto;
+    padding: 0;
+}
+
+.carousel-caption {
+    max-width: 600px; 
+    margin: 0 auto; 
+  }  
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: black; 
+    border-radius: 10px;
+    scale: 2;
+    width: 50px; 
+    height: 50px;
+    margin-top: 150px;
+}
