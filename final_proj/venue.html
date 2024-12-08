@@ -183,10 +183,6 @@
       pieces.forEach(piece => {
         piece.addEventListener("dragstart", dragStart);
         piece.addEventListener("dragend", dragEnd);
-
-        piece.addEventListener("click", function () {
-          this.classList.toggle("flipped");
-        });
       });
 
       dropZones.forEach(zone => {
@@ -195,6 +191,37 @@
       });
 
       let draggedPiece = null;
+      let startX = 0;
+      let startY = 0;
+      let xOffset = 0;
+      let yOffset = 0;
+      let currentZIndex = 1;
+
+      pieces.forEach(image => {
+        image.addEventListener('touchstart', function(e) {
+          isDragging = true;
+          startX = e.touches[0].clientX - xOffset;
+          startY = e.touches[0].clientY - yOffset;
+          e.preventDefault(); // prevent scrolling
+        }, { passive: false });
+
+        document.addEventListener('touchmove', function(e) {
+          if (isDragging && e.target === image) {
+            e.preventDefault(); // prevent scrolling
+            xOffset = e.touches[0].clientX - startX;
+            yOffset = e.touches[0].clientY - startY;
+            image.style.transform = `translate(${xOffset}px, ${yOffset}px)`;
+            currentZIndex++;
+            image.style.zIndex = currentZIndex;
+          }
+        }, { passive: false });
+
+        document.addEventListener('touchend', function(e) {
+          if (isDragging) {
+            isDragging = false;
+          }
+        });
+      });
 
       function dragStart(e) {
         draggedPiece = e.target;
@@ -243,7 +270,6 @@
       function toggleMenu() {
         document.getElementById('mob-menu').classList.toggle('show')
       }
-
 
     </script>
   </body>

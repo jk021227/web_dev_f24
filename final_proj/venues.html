@@ -18,8 +18,8 @@
     />
   </head>
   <body style="padding: 0;">
-    <header style="padding-top: 22px;">
-      <h1 style="font-size: 50px; margin: 0; padding-bottom: 2px;"><a href="homepage.html">M3 — MarryMeMaybe</a></h1>
+    <header class="venhead">
+      <h1 class="venmob"><a href="homepage.html">M3 — MarryMeMaybe</a></h1>
       <nav id="main-nav">
         <ul class="menu" style="padding: 0; margin: 0;">
           <li><a href="#" id="venues-link" style="background-color: #005d6b; padding: 5px 25px;">Venues</a></li>
@@ -27,8 +27,8 @@
           <li><a href="outfits.html" style="padding: 5px 25px;">Outfits</a></li>
         </ul>
       </nav>
-      <span class="mobile-menu" onclick="toggleMenu()">&#8801;</span>
-      <nav id="mob-menu">
+      <span class="ven-mobile-menu" onclick="toggleMenu()">&#8801;</span>
+      <nav id="ven-mob-menu">
         <ul class="mob-menu-inside">
           <li><a href="#" id="venues-link-mob" style="color: white; background-color: #02ADC7;">Venues</a></li>
           <li><a href="flowers.html">Flowers</a></li>
@@ -134,7 +134,7 @@
       document.addEventListener("DOMContentLoaded", loadTheme);
 
       function toggleMenu() {
-        document.getElementById("mob-menu").classList.toggle("show");
+        document.getElementById("ven-mob-menu").classList.toggle("show");
       }
 
       document.addEventListener("DOMContentLoaded", () => {
