@@ -125,34 +125,31 @@
       document.querySelector('.vase').setAttribute('draggable', 'false');
       let currentZIndex = 1000;
 
-      // document.querySelectorAll('.draggable'): selects all images with class name 'draggable' & returns a NodeList
-      // .forEach(function(image) { ... }): iterates through each image in the NodeList
       document.querySelectorAll('.draggable').forEach(function(image) {
           image.setAttribute('draggable', 'false'); // disable drag-and-drop feature for each image
 
           let isDragging = false;
           let xOffset = 0, yOffset = 0, startX = 0, startY = 0;
 
-          // prevent default drag behavior -> this prevets the image from "copy-dragging" instead of actually dragging on screen
+          // prevent default drag behavior -> this prevets the image 
           image.addEventListener('dragstart', (e) => e.preventDefault());
 
           // mouse events(aka movements)
           image.addEventListener('mousedown', function(e) {
               isDragging = true;
-              startX = e.clientX - xOffset; // starting x-coordinate of the image, e.clientX: x-coordinate of the mouse pointer
-              startY = e.clientY - yOffset; // starting y-coordinate of the image, e.clientY: y-coordinate of the mouse pointer
+              startX = e.clientX - xOffset; 
+              startY = e.clientY - yOffset; 
           });
           
           // mousemove event: when the mouse pointer is moved
           document.addEventListener('mousemove', function(e) {
               if (isDragging) {
                   e.preventDefault(); // prevent default behavior of the event which is to drag the image
-                  xOffset = e.clientX - startX; // calculate the x-coordinate of the image by subtracting the starting x-coordinate from the current x-coordinate of the mouse pointer
+                  xOffset = e.clientX - startX;
                   yOffset = e.clientY - startY; 
-                  // move the image to the new x and y coordinates
                   image.style.transform = `translate(${xOffset}px, ${yOffset}px)`;
-                  currentZIndex++; // increase the z-index to make sure the image is on top of other images
-                  image.style.zIndex = currentZIndex; // set the z-index of the image so that next image is on top
+                  currentZIndex++; 
+                  image.style.zIndex = currentZIndex; 
               }
           });
 
